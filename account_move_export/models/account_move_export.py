@@ -11,7 +11,8 @@ from dateutil.relativedelta import relativedelta
 from markupsafe import Markup
 from unidecode import unidecode
 
-from odoo import Command, _, api, fields, models
+from odoo import _, api, fields, models
+from odoo.fields import Command
 from odoo.exceptions import UserError, ValidationError
 from odoo.tools.misc import format_date
 
@@ -739,7 +740,6 @@ class AccountMoveExport(models.Model):
         }
         return action
 
-    @api.returns("mail.message", lambda value: value.id)
     def message_post(self, **kwargs):
         if self.env.context.get("mark_export_as_sent"):
             self.write({"sent": True})
