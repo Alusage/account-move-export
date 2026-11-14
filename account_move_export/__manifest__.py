@@ -4,7 +4,7 @@
 
 {
     "name": "Account Move Export",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Accounting",
     "license": "AGPL-3",
     "summary": "Export journal entries to specific formats",
@@ -14,8 +14,7 @@
     "depends": ["account", "date_range"],
     "external_dependencies": {"python": ["xlsxwriter", "unidecode"]},
     "data": [
-        "security/ir.model.access.csv",
-        "security/ir_rule.xml",
+        "security/ir.access.csv",
         "data/ir_sequence.xml",
         "data/account_move_export_config.xml",
         "data/mail_template.xml",

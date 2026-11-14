@@ -1,0 +1,12 @@
+id,name,model_id,group_id/id,operation,domain
+access_account_move_export_full,Full access on account.move.export,account.move.export,account.group_account_invoice,crud,
+access_account_move_export_read,Read access on account.move.export to auditor,account.move.export,account.group_account_readonly,r,
+access_account_move_export_config_read,Read access on account.move.export.config,account.move.export.config,account.group_account_invoice,r,
+access_account_move_export_config_auditor,Read access on account.move.export.config to auditor,account.move.export.config,account.group_account_readonly,r,
+access_account_move_export_config_full,Full access on account.move.export.config,account.move.export.config,account.group_account_manager,crud,
+access_account_move_export_config_column_read,Read access on account.move.export.config.column,account.move.export.config.column,account.group_account_invoice,r,
+access_account_move_export_config_column_auditor,Read access on account.move.export.config.column to auditor,account.move.export.config.column,account.group_account_readonly,r,
+access_account_move_export_config_column_full,Full access on account.move.export.config.column,account.move.export.config.column,account.group_account_manager,crud,
+access_account_move_export_new,Full access on account.move.export.new wizard,account.move.export.new,account.group_account_invoice,crud,
+account_move_export_rule,Journal entry export multi-company,account.move.export,,crud,"[('company_id', 'in', company_ids)]"
+account_move_export_config_rule,Journal entry export configuration multi-company,account.move.export.config,,crud,"[('company_id', 'in', company_ids + [False])]"
