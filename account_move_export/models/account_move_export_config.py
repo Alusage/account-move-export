@@ -150,18 +150,14 @@ class AccountMoveExportConfig(models.Model):
         "res.partner", string="Send by Email To", domain=[("email", "!=", False)]
     )
 
-    _sql_constraints = [
-        (
-            "name_company_uniq",
-            "unique(name, company_id)",
-            "An export already exists with the same name.",
-        ),
-        (
-            "xlsx_font_size_positive",
-            "CHECK(xlsx_font_size > 0)",
-            "The font size must be strictly positive.",
-        ),
-    ]
+    _name_company_uniq = models.Constraint(
+        "unique(name, company_id)",
+        "An export already exists with the same name.",
+    )
+    _xlsx_font_size_positive = models.Constraint(
+        "CHECK(xlsx_font_size > 0)",
+        "The font size must be strictly positive.",
+    )
 
     @api.onchange("partner_option")
     def partner_option_change(self):
@@ -266,13 +262,10 @@ class AccountMoveExportConfigColumn(models.Model):
         "not the general account.",
     )
 
-    _sql_constraints = [
-        (
-            "config_header_uniq",
-            "unique(config_id, header_label)",
-            "This header already exists in this configuration.",
-        )
-    ]
+    _config_header_uniq = models.Constraint(
+        "unique(config_id, header_label)",
+        "This header already exists in this configuration.",
+    )
 
     @api.model
     def _prepare_field_dict(self):

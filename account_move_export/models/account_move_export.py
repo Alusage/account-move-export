@@ -128,7 +128,7 @@ class AccountMoveExport(models.Model):
     )
     attachment_id = fields.Many2one("ir.attachment", readonly=True, copy=False)
     attachment_datas = fields.Binary(
-        related="attachment_id.datas", string="Export File"
+        related="attachment_id.raw", string="Export File"
     )
     attachment_name = fields.Char(related="attachment_id.name", string="Filename")
     state = fields.Selection(
@@ -673,7 +673,8 @@ class AccountMoveExport(models.Model):
                     count += 1
             checksum2filename[attach.checksum] = filename
             zip_file.writestr(
-                self._prepare_zip_attachment_filename(move, filename), attach.raw
+                self._prepare_zip_attachment_filename(move, filename),
+                attach.raw.content,
             )
 
     def _prepare_filename(self):
